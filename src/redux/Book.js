@@ -7,21 +7,7 @@ const bookSlice = createSlice({
     },
     reducers:{
         search:(state,action:PayloadAction<string>) => {
-            console.log(action.payload);
-            fetch(`https://www.googleapis.com/books/v1/volumes?q=${action?.payload}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data.items);
-                let bookArray = []
-                data?.items?.forEach(book => {
-                   // console.log('book',book);
-                    bookArray.push(book);
-                })
-                console.log('state',state.bookData);
-                console.log('bookArray',bookArray);
-                state.bookData = bookArray;
-            })
-            .catch(e => console.log(e))
+            console.log(action.payload,state);
         }
     },
     extraReducers:(builder) => {
